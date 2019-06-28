@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
-  constructor() { }
+  public menus = [
+    {title: "Home", url: "/menu/home", icon: "home"},
+    {title: "Meteo", url: "/menu/meteo", icon: "thermometer"},
+    {title: "Gallery", url: "/menu/gallery", icon: "camera"},
+    {title: "Locations", url: "/menu/locations", icon: "navigate"},
+    {title: "Logout", url: "logout", icon: "log-out"}
+  ]
+
+  constructor(private router:Router, private authService:AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  onMenuAction(m){
+
+    if(m.url=='logout'){
+      this.authService.logout();
+      this.router.navigateByUrl('/login');
+    }
+    else{
+      this.router.navigateByUrl(m.url);
+    }
+
   }
 
 }

@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Router} from '@angular/router';
+import {AuthenticationService} from "./services/authentication.service";
 
 
 
@@ -17,7 +18,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
 
   ) {
     this.initializeApp();
@@ -32,6 +34,14 @@ export class AppComponent {
   }
 
   private login(){
-    this.router.navigateByUrl('/login');
+
+    let authenticated= this.authService.loadToken();
+    if(authenticated==true){
+      this.router.navigateByUrl('/menu/home');
+    }
+    else {
+      this.router.navigateByUrl('/login');
+    }
+
   }
 }

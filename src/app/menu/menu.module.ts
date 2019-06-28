@@ -10,7 +10,13 @@ import { MenuPage } from './menu.page';
 const routes: Routes = [
   {
     path: '',
-    component: MenuPage
+    component: MenuPage,
+      children: [
+        { path: 'home', loadChildren: '../home/home.module#HomePageModule' },
+        { path: 'meteo', loadChildren: '../meteo/meteo.module#MeteoPageModule' },
+        { path: 'gallery', loadChildren: '../gallery/gallery.module#GalleryPageModule' },
+        { path: 'locations', loadChildren: '../locations/locations.module#LocationsPageModule' },
+      ]
   }
 ];
 
