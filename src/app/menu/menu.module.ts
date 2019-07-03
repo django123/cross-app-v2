@@ -11,12 +11,13 @@ const routes: Routes = [
   {
     path: '',
     component: MenuPage,
-      children: [
-        { path: 'home', loadChildren: '../home/home.module#HomePageModule' },
-        { path: 'meteo', loadChildren: '../meteo/meteo.module#MeteoPageModule' },
-        { path: 'gallery', loadChildren: '../gallery/gallery.module#GalleryPageModule' },
-        { path: 'locations', loadChildren: '../locations/locations.module#LocationsPageModule' },
-      ]
+    children: [
+      { path: 'home', loadChildren: '../home/home.module#HomePageModule' },
+      { path: 'meteo', loadChildren: '../meteo/meteo.module#MeteoPageModule' },
+      { path: 'gallery', loadChildren: '../gallery/gallery.module#GalleryPageModule' },
+      { path: 'locations', loadChildren: '../locations/locations.module#LocationsPageModule' },
+      { path: 'new-location', loadChildren: '../new-location/new-location.module#NewLocationPageModule' },
+    ]
   }
 ];
 

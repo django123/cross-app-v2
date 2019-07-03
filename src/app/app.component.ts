@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {Router} from '@angular/router';
-import {AuthenticationService} from "./services/authentication.service";
+import {AuthenticationService} from './services/authentication.service';
 
 
 
@@ -15,11 +15,11 @@ import {AuthenticationService} from "./services/authentication.service";
 })
 export class AppComponent {
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private router: Router,
-    private authService: AuthenticationService
+      private platform: Platform,
+      private splashScreen: SplashScreen,
+      private statusBar: StatusBar,
+      private router: Router,
+      private authService: AuthenticationService
 
   ) {
     this.initializeApp();
@@ -33,13 +33,12 @@ export class AppComponent {
     });
   }
 
-  private login(){
+  private login() {
 
-    let authenticated= this.authService.loadToken();
-    if(authenticated==true){
+    const authenticated = this.authService.loadToken();
+    if (authenticated == true) {
       this.router.navigateByUrl('/menu/home');
-    }
-    else {
+    } else  {
       this.router.navigateByUrl('/login');
     }
 
